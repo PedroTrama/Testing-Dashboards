@@ -1,0 +1,4 @@
+Para ativar o ambiente virtual (venv), rodar .\.venv\Scripts\activate
+Sempre rodar isso em terminais novos e ao abrir o vscode
+Para rodar o app.py: streamlit run .\app.py
+Para rodar o dataset.py: python .\dataset.py 
