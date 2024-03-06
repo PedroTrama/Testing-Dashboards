@@ -29,7 +29,16 @@ with st.sidebar.expander('Data da Compra'):
        'Selecione a Data',
        (df['Data da Compra'].min(),
        df['Data da Compra'].max())
-       
    )
 
-st.dataframe(df)
+query = '''
+    `Categoria do Produto` in @categorias and \
+    @preco[0] <= Preço <= @preco[1] and \
+    @data_compra[0] <= `Data da Compra` <= @data_compra[1]
+'''
+filtro_dados = df.query(query)
+filtro_dados = filtro_dados[colunas]
+
+st.markdown(f'Linhas: :red[{filtro_dados.shape[0]}] Colunas: :red[{filtro_dados.shape[1]}]')
+
+st.dataframe(filtro_dados)
